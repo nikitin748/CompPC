@@ -1,0 +1,85 @@
+        div {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            gap: 0;
+        }
+        
+        .up {
+            display: flex;
+            flex-direction: row;
+            height: 10vh;
+            background-color: #d9d9d9;
+            margin-top: 0;
+            margin-bottom: 0;
+            justify-content: start;
+        }
+        
+        .down {
+            display: flex;
+            flex-direction: column;
+            height: 90vh;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        
+        .left {
+            display: flex;
+            height: 100%;
+            justify-content: left;
+            width: 33%;
+        }
+        
+        .center {
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            width: 33%;
+            flex-direction: row;
+        }
+        
+        .right {
+            display: flex;
+            height: 100%;
+            justify-content: flex-end;
+            width: 33%;
+            flex-direction: row;
+            align-items: center;
+        }
+        
+        .text1 {
+            display: flex;
+            align-items: center;
+            font-size: 40px;
+        }
+        
+        .settings {
+            height: 73px;
+            width: 97px;
+            background-color: #d9d9d9;
+            border-color: #d9d9d9;
+            border: 0;
+        }
+        
+        .FAQ {
+            height: 77px;
+            width: 140px;
+            background-color: #d9d9d9;
+            border-color: #d9d9d9;
+            border: 0;
+        }
+        
+        .down {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .title {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            height: 25%;
+        }

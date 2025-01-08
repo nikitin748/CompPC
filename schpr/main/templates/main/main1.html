@@ -1,0 +1,61 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Создание компьютера</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'main/css/main.css' %}">
+</head>
+<body>
+<div>
+    <div class="up">
+        <div class="left"><button class="settings"><img src="{%static 'main/img/settings.png' %}"></button></div>
+        <div class="center"><p class='text1'>CompPC</p></div>
+        <div class="right"><button class="FAQ"><img src="{%static 'main/img/FAQ.png' %}"></button></div>
+    </div>
+    <div class="down">
+        <div class="title">Создание компьютера</div>
+        <div class="comp">
+            <div class="podcomp">
+                <p class="text2">Предпочитаемый процессор</p>
+                <p class="sos"><input type="radio" name="processor" value="Intel"> Intel</p>
+                <p class="sos"><input type="radio" name="processor" value="AMD"> AMD Ryzen</p>
+            </div>
+
+            <div class="podcomp">
+                <p class="text2">Предпочитаемая видеокарта</p>
+                <p class="sos"><input type="radio" name="graphics" value="Nvidia"> Nvidia</p>
+                <p class="sos"><input type="radio" name="graphics" value="AMD"> AMD Radeon</p>
+            </div>
+        </div>
+
+        <div class="polzunok">
+            <label for="priceRange">Цена сборки:</label>
+            <span id="priceValue">20,000 ₽</span> <!-- Отображение цены -->
+            <input id="priceRange" class="pol" type="range" min="20000" max="300000" step="1000" value="20000"
+                   oninput="updatePrice(this.value)">
+        </div>
+
+        <!-- Кнопка "Показать результаты" -->
+        <div class="show-results">
+    <a href="{% url 'result' %}" class="show-results-button">Показать результаты</a>
+</div>
+
+        <div class="raschet"></div>
+
+    </div>
+</div>
+<script src="" async defer></script>
+
+<script>
+// Функция для обновления отображаемой цены
+function updatePrice(value) {
+    document.getElementById('priceValue').innerText = value + ' ₽';
+}
+</script>
+
+</body>
+</html>
