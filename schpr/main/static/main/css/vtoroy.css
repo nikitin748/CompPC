@@ -83,3 +83,11 @@
             font-size: 30px;
             height: 25%;
         }
+        .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF; /* Цвет фона */
+    color: white; /* Цвет текста */
+    text-decoration: none; /* Убираем подчеркивание */
+    border-radius: 5px; /* Закругленные углы */
+}

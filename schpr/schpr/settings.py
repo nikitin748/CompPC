@@ -57,7 +57,7 @@ ROOT_URLCONF = 'schpr.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR/'main/templates/main'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,7 +80,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-        'NAME': BASE_DIR / 'comp.db', #НЕЙРОСЕТЬ
+        'NAME': BASE_DIR / 'comp.db',
     }
 }
 

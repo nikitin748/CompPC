@@ -4,22 +4,59 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<html>
+<html lang="ru">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>Результаты сборки ПК</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{%static 'main/css/vtoroy.css' %}">
+        <link rel="stylesheet" href="{% static 'main/css/vtoroy.css' %}">
     </head>
     <body>
-<div>
-    <div class="up">
-        <div class="left"><button class="settings"><img src="{%static 'main/img/settings.png' %}"></button></div>
-        <div class="center"><p class='text1'>CompPC</p></div>
-        <div class="right"><button class="FAQ"><img img src="{%static 'main/img/FAQ.png' %}"></button></div>
-    </div>
-    <div class="down">
-        <div class="title">Ваши комплектующие</div>
-        <div class="comp">
+        <div>
+            <div class="up">
+                <div class="left"><button class="settings"><img src="{% static 'main/img/settings.png' %}"></button></div>
+                <div class="center"><p class='text1'>CompPC</p></div>
+                <div class="right"><button class="FAQ"><img src="{% static 'main/img/FAQ.png' %}"></button></div>
+            </div>
+            <div class="down">
+                <div class="title">Ваши комплектующие</div>
+                <div class="comp">
+                    <h2>Комплектующие для сборки ПК</h2>
+
+                    <!-- Вывод видеокарты -->
+                    <h3>Выбранная видеокарта:</h3>
+                    {% if selected_graphics_card %}
+                        <p>{{ selected_graphics_card.model }} - {{ selected_graphics_card.price }} руб.</p>
+                    {% else %}
+                        <p>Нет доступных видеокарт по вашему запросу.</p>
+                    {% endif %}
+
+                    <!-- Вывод процессора -->
+                    <h3>Выбранный процессор:</h3>
+                    {% if selected_processor %}
+                        <p>{{ selected_processor.model }} - {{ selected_processor.price }} руб.</p>
+                    {% else %}
+                        <p>Нет доступных процессоров по вашему запросу.</p>
+                    {% endif %}
+
+                    <!-- Вывод остальных комплектующих в одну строку -->
+                    <h3>Другие комплектующие:</h3>
+                    {% if selected_other_set %}
+                        <p>Кулер: {{ selected_other_set.cooler }}, Оперативная память: {{ selected_other_set.RAM }}, Блок питания: {{ selected_other_set.bp }} - Общая стоимость: {{ selected_other_set.priceSum }} руб.</p>
+                    {% else %}
+                        <p>Нет доступных других комплектующих по вашему запросу.</p>
+                    {% endif %}
+
+                    <!-- Итоговая цена ПК -->
+                    <h2>Итоговая цена ПК:</h2>
+                    <p>{{ total_price }} руб.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
