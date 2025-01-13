@@ -21,7 +21,7 @@ def result(request):
         selected_graphics_brand = request.POST.get('graphics')
 
         # Вычисляем бюджет для видеокарты (30% от общего бюджета)
-        graphics_card_budget = budget * 0.3
+        graphics_card_budget = budget * 0.42
 
         # Получение подходящих видеокарт
         if selected_graphics_brand == "Nvidia":
@@ -32,11 +32,7 @@ def result(request):
                 '-price')  # Сортировка по убыванию цены
 
         # Выбор самой дорогой видеокарты в пределах бюджета
-        if graphics_cards.exists():
-            selected_graphics_card = graphics_cards.first()
-        else:
-            selected_graphics_card = NV.objects.order_by(
-                '-price').first() if selected_graphics_brand == "Nvidia" else RD.objects.order_by('-price').first()
+        selected_graphics_card = graphics_cards.first()
 
         # Определяем оставшийся бюджет после выбора видеокарты
         remaining_budget_after_graphics = budget - (selected_graphics_card.price if selected_graphics_card else 0)
