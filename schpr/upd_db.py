@@ -1,13 +1,12 @@
 import sqlite3
 
 # Подключение к базе данных
-conn = sqlite3.connect('comp.db')  # Убедитесь, что путь к вашей базе данных правильный
+conn = sqlite3.connect('comp.db')
 cursor = conn.cursor()
 
 
 # Функция для создания новой таблицы с первичным ключом
 def create_new_table():
-    # Создание новой таблицы nv
     cursor.execute("""
     CREATE TABLE nv_new (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -16,7 +15,6 @@ def create_new_table():
     );
     """)
 
-    # Создание новой таблицы rd
     cursor.execute("""
     CREATE TABLE rd_new (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -25,7 +23,6 @@ def create_new_table():
     );
     """)
 
-    # Создание новой таблицы rizen
     cursor.execute("""
     CREATE TABLE rizen_new (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -35,7 +32,6 @@ def create_new_table():
     );
     """)
 
-    # Создание новой таблицы intel
     cursor.execute("""
     CREATE TABLE intel_new (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -45,7 +41,6 @@ def create_new_table():
     );
     """)
 
-    # Создание новой таблицы otherset
     cursor.execute("""
     CREATE TABLE otherset_new (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -59,19 +54,15 @@ def create_new_table():
 
 # Функция для копирования данных из старых таблиц в новые
 def copy_data():
-    # Копирование данных из nv
+
     cursor.execute("INSERT INTO nv_new (model, price) SELECT model, price FROM nv;")
 
-    # Копирование данных из rd
     cursor.execute("INSERT INTO rd_new (model, price) SELECT model, price FROM rd;")
 
-    # Копирование данных из rizen
     cursor.execute("INSERT INTO rizen_new (model, motherboard, price) SELECT model, motherboard, price FROM rizen;")
 
-    # Копирование данных из intel
     cursor.execute("INSERT INTO intel_new (model, motherboard, price) SELECT model, motherboard, price FROM intel;")
 
-    # Копирование данных из otherset
     cursor.execute(
         "INSERT INTO otherset_new (cooler, RAM, bp, priceSum) SELECT cooler, RAM, bp, priceSum FROM otherset;")
 
