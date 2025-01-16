@@ -92,7 +92,6 @@ try:
 except sqlite3.Error as e:
     print(f"Ошибка при выполнении операций: {e}")
 
-# Сохранение изменений и закрытие соединения
 conn.commit()
 conn.close()
 

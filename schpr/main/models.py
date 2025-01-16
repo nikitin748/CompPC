@@ -5,14 +5,14 @@ class NV(models.Model):
     price = models.IntegerField()
 
     class Meta:
-        db_table = 'nv'  # Имя таблицы в базе данных
+        db_table = 'nv'
 
 class RD(models.Model):
     model = models.CharField(max_length=100)
     price = models.IntegerField()
 
     class Meta:
-        db_table = 'rd'  # Имя таблицы в базе данных
+        db_table = 'rd'
 
 class Rizen(models.Model):
     model = models.CharField(max_length=100)
@@ -20,7 +20,7 @@ class Rizen(models.Model):
     price = models.IntegerField()
 
     class Meta:
-        db_table = 'rizen'  # Имя таблицы в базе данных
+        db_table = 'rizen'
 
 class Intel(models.Model):
     model = models.CharField(max_length=100)
@@ -28,7 +28,7 @@ class Intel(models.Model):
     price = models.IntegerField()
 
     class Meta:
-        db_table = 'intel'  # Имя таблицы в базе данных
+        db_table = 'intel'
 
 class OtherSet(models.Model):
     cooler = models.CharField(max_length=100)
@@ -37,7 +37,7 @@ class OtherSet(models.Model):
     priceSum = models.IntegerField()
 
     class Meta:
-        db_table = 'otherset'  # Имя таблицы в базе данных
+        db_table = 'otherset'
 
 
 

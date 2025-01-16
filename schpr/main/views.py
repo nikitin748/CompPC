@@ -20,53 +20,44 @@ def result(request):
         selected_processor_brand = request.POST.get('processor')
         selected_graphics_brand = request.POST.get('graphics')
 
-        # Вычисляем бюджет для видеокарты (30% от общего бюджета)
         graphics_card_budget = budget * 0.42
 
-        # Получение подходящих видеокарт
         if selected_graphics_brand == "Nvidia":
             graphics_cards = NV.objects.filter(price__lte=graphics_card_budget).order_by(
-                '-price')  # Сортировка по убыванию цены
+                '-price')  #
         else:
             graphics_cards = RD.objects.filter(price__lte=graphics_card_budget).order_by(
-                '-price')  # Сортировка по убыванию цены
+                '-price')
 
-        # Выбор самой дорогой видеокарты в пределах бюджета
         selected_graphics_card = graphics_cards.first()
 
-        # Определяем оставшийся бюджет после выбора видеокарты
         remaining_budget_after_graphics = budget - (selected_graphics_card.price if selected_graphics_card else 0)
 
-        # Получение подходящих процессоров
         if selected_processor_brand == "AMD":
             processors = Rizen.objects.filter(price__lte=remaining_budget_after_graphics).order_by(
-                '-price')  # Сортировка по убыванию цены
+                '-price')
         else:
             processors = Intel.objects.filter(price__lte=remaining_budget_after_graphics).order_by(
-                '-price')  # Сортировка по убыванию цены
+                '-price')
 
-        # Выбор самого дорогого процессора в пределах оставшегося бюджета
         if processors.exists():
             selected_processor = processors.first()
         else:
             selected_processor = Rizen.objects.order_by(
                 '-price').first() if selected_processor_brand == "AMD" else Intel.objects.order_by('-price').first()
 
-        # Определяем оставшийся бюджет для других комплектующих
         remaining_budget_for_others = remaining_budget_after_graphics - (
             selected_processor.price if selected_processor else 0)
 
-        # Получение всех других комплектующих в зависимости от оставшегося бюджета
         othersets = OtherSet.objects.filter(priceSum__lte=remaining_budget_for_others).order_by(
-            '-priceSum')  # Сортировка по убыванию цены
+            '-priceSum')
 
-        # Выбор других комплектующих
         if othersets.exists():
-            selected_other_set = othersets.first()  # Самая дорогая доступная другая комплектующая в рамках бюджета
+            selected_other_set = othersets.first()
         else:
-            selected_other_set = OtherSet.objects.order_by('priceSum').first()  # Самое дешевое из всех комплектующих
+            selected_other_set = OtherSet.objects.order_by('priceSum').first()
 
-        # Итоговая цена ПК
+
         total_price = (selected_graphics_card.price if selected_graphics_card else 0) + \
                       (selected_processor.price if selected_processor else 0) + \
                       (selected_other_set.priceSum if selected_other_set else 0)
